@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true" default-lazy="false">
+	<class name="com.televital.scheduling.domain.Login" table="TBL_Login" polymorphism="implicit">
+		<id name="hospitalId" column="HospitalId">
+			<generator class="foreign"><param name="property">hospital</param></generator>
+		</id>
+		
+		<property name="userId" column="UserId"/>
+		<property name="password" column="Password"/>
+		<property name="firstName" column="FirstName"/>
+		<property name="lastName" column="LastName"/>
+		<property name="tstamp" column="TStamp"/>
+		<property name="accountType" column="AccountType"/>
+		<component name="address"
+			class="com.televital.scheduling.domain.Address">
+			<property name="addressLine1" column="AddressLine1"></property>
+			<property name="addressLine2" column="AddressLine2"></property>
+			<property name="city" column="City"></property>
+			<property name="state" column="State"></property>
+			<property name="country" column="Country"></property>
+			<property name="postalCode" column="PostalCode"></property>
+			<property name="contactNumber" column="ContactNumber"></property>
+			<property name="faxNumber" column="FaxNumber"></property>
+			<property name="email" column="Email"></property>
+		</component>
+		<one-to-one name="hospital" class="com.televital.scheduling.domain.Hospital"></one-to-one>
+    </class>
+    
+	<class name="com.televital.scheduling.domain.Hospital" table="TBL_Hospital" polymorphism="implicit">
+		<id name="hospitalId" column="HospitalId">
+			<generator class="assigned" />
+		</id>
+		<property name="hospitalName" column="HospitalName"/>
+		<property name="hospitalCode" column="HospitalCode"/>
+		<property name="activationKey" column="ActivationKey"/>
+		<property name="logo" column="Logo"/>
+		<property name="url" column="Url"/>
+		<property name="disclaimer" column="Disclaimer"/>
+		<property name="tstamp" column="TStamp"/>
+		<property name="hospitalType" column="HospitalType"/>
+		<component name="address"
+			class="com.televital.scheduling.domain.Address">
+			<property name="addressLine1" column="AddressLine1"></property>
+			<property name="addressLine2" column="AddressLine2"></property>
+			<property name="city" column="City"></property>
+			<property name="state" column="State"></property>
+			<property name="country" column="Country"></property>
+			<property name="postalCode" column="PostalCode"></property>
+			<property name="contactNumber" column="ContactNumber"></property>
+			<property name="faxNumber" column="FaxNumber"></property>
+			<property name="email" column="Email"></property>
+		</component>
+	</class>
+		
+	<class name="com.televital.scheduling.domain.SSHSchedule" table="TBL_SSHSchedule" polymorphism="implicit">
+		<id name="scheduleId" column="SSH_Id">
+			<generator class="identity"/>
+		</id>
+		<!-- 	<property name="hospitalId" column="HospitalId"/> -->
+		<property name="specialty" column="Specialty"/>
+		<property name="day" column="Day"/>
+		<property name="fromTime" column="FromTime"/>
+		<property name="toTime" column="ToTime"/>
+		<many-to-one name="hospital" class="com.televital.scheduling.domain.Hospital">
+			<column name="hospitalId"></column>
+		</many-to-one>
+	</class>
+	<class name="com.televital.scheduling.domain.PESchedule" table="TBL_PESchedule" polymorphism="implicit">
+		<id name="scheduleId" column="PE_Id">
+			<generator class="identity"/>
+		</id>
+		<!--  <property name="hospitalId" column="HospitalId"/> -->
+		<property name="specialty" column="Specialty"/>
+		<property name="day" column="Day"/>
+		<property name="fromTime" column="FromTime"/>
+		<property name="toTime" column="ToTime"/>
+		<property name="status" column="Status"/>
+		<many-to-one name="sshHospital" class="com.televital.scheduling.domain.Hospital">
+			<column name="SSHHospitalId"></column>
+		</many-to-one>
+		<many-to-one name="peHospital" class="com.televital.scheduling.domain.Hospital">
+			<column name="PEHospitalId"></column>
+		</many-to-one>
+	</class>
+		
+	<class name="com.televital.scheduling.domain.FinalSchedule" table="TBL_FinalSchedule" polymorphism="implicit">
+		<id name="scheduleId" column="TCIL_Id">
+			<generator class="identity"/>
+		</id>
+	 <!-- <property name="sshHospitalId" column="SSHHospitalId"/>
+		<property name="peHospitalId" column="PEHospitalId"/> -->
+		<property name="specialty" column="Specialty"/>
+		<property name="day" column="Day"/>
+		<property name="fromTime" column="FromTime"/>
+		<property name="toTime" column="ToTime"/>
+		<many-to-one name="sshHospital" class="com.televital.scheduling.domain.Hospital">
+			<column name="SSHHospitalId"></column>
+		</many-to-one>
+		<many-to-one name="peHospital" class="com.televital.scheduling.domain.Hospital">
+			<column name="PEHospitalId"></column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>
+	
+	
+	
+	

@@ -1,0 +1,211 @@
+
+/*-------------------------------- Display Profile Common css-----------------------------------------*/
+
+BODY {
+	MARGIN-TOP: 0px;  MARGIN-LEFT: 0px;	 MARGIN-RIGHT: 0px;	 MARGIN-BOTTOM: 0px;   background-color:#ffffff;
+	}
+BODY, INPUT, OPTION, SELECT, TEXTAREA, TABLE, TD, TR, P {
+	FONT-SIZE: 11px; 		FONT-FAMILY: verdana;
+	}
+p {	
+	font-style: normal; 	font-weight: normal; 	padding: 7px 7px 7px 7px; 
+	}
+.select, INPUT, TEXTAREA,  { 
+	PADDING-LEFT: 0px;		PADDING-RIGHT: 0px;		BORDER-RIGHT: silver 1px solid;
+	BORDER-TOP: silver 1px solid; 					BORDER-LEFT: silver 1px solid; 	BORDER-BOTTOM: silver 1px solid;
+	}
+.warning {	background-image: url(../images/warning.gif) ;
+		background-repeat: no-repeat; background-position:  top left; width:12px;
+	 }
+#bulletred li { list-style-image: url(../images/bulletred.gif);}
+#bulletblack li { list-style-image: url(../images/bulletblack.gif);}
+
+.checkbox{	border: 0px; 	border-color: silver;}
+.blue {	color: #0000FF; }
+.red {	color: #FF0000; }
+.green { color: #00CC00; }
+.bold {	font-weight: bold;}
+.left { text-align: left; }
+.center { text-align: center; }
+.right { text-align: right; }
+.justify { text-align: justify; }
+.h1 {	font-size: 21px; font-weight: Bold; COLOR: #666666; TEXT-DECORATION: none; }
+.h2 {	font-size: 18px; font-weight: Bold; COLOR: #666666; TEXT-DECORATION: none; }
+.h3 {	font-size: 15px; font-weight: Bold; COLOR: #666666; TEXT-DECORATION: none; }
+.h4 {	font-size: 12px; font-weight: Bold; COLOR: #666666; TEXT-DECORATION: none; }
+
+.emrheading {	font-size: 15px; text-align:center; vertical-align:middle; font-weight: Bold; COLOR: #OOOOOO; TEXT-DECORATION: none; }
+
+#bulletred li { list-style-image: url(../images/bulletred.gif); }
+#bulletblack li { list-style-image: url(../images/bulletblack.gif); }
+
+.warning {	background-image: url(../images/warning.gif) ;
+			background-repeat: no-repeat; background-position:  top left; width:12px;
+			}
+.bottomborder	{border-bottom-width:1px; 	border-top-width:0px; 	border-right-width:0px;	border-left-width:0px;	
+			border-style: solid; 		border-bottom-color: #ffffff;	
+}
+.topborder	{border-bottom-width:0px; 	border-top-width:1px; 	border-right-width:0px;	border-left-width:0px;	
+			border-style: solid; 		border-bottom-color: #ffffff;	
+}
+.leftborder	{border-bottom-width:0px; 	border-top-width:0px; 	border-right-width:0px;	border-left-width:1px;	
+			border-style: solid; 		border-bottom-color: #ffffff;	
+}
+.rightborder	{border-bottom-width:0px; 	border-top-width:0px; 	border-right-width:1px;	border-left-width:0px;	
+			border-style: solid; 		border-bottom-color: #ffffff;	
+}
+
+.topleft_1 {	padding: 0px 0px 0px 0px;	background-image: url(../images/corner_tl.gif);
+			height: 4px;	background-repeat: no-repeat;	background-position:  top left;
+			}
+
+.topleft {	padding: 0px 0px 0px 0px;	background-image: url(../images/corner_tl.gif);
+			Height:20px;				background-repeat: no-repeat;	background-position:  top left;	
+			}
+.topright {	padding: 0px 0px 0px 0px;	background-image: url(../images/corner_tr.gif);
+			text-align: right;			background-repeat: no-repeat;	background-position: top right;	
+			}
+.bottomleft { padding: 0px 0px 0px 0px;	 background-image: url(../images/corner_bl.gif);							
+			background-repeat: no-repeat;	background-position:  bottom left; height: 4px;	
+			}
+.bottomright { padding: 0px 0px 0px 0px; background-image: url(../images/corner_br.gif);	
+			background-repeat: no-repeat;	background-position:  bottom right;	
+			}
+
+.read { 	background-color:#ffffff; }
+
+.nonread{	background-color:f4f2f2; }
+
+/*-------------------------------------  Display profile03-----------------------------------------*/
+/*---------------------------------------------General---------------------------------------------*/
+
+.button {	cursor: pointer; 	background-image: url(../images/profile03/buttonbg.gif) ;background-position:  bottom left;
+			background-repeat: repeat;		line-height: 16px; 					BORDER-LEFT: #FFFFFF 1px solid;
+			BORDER-TOP: #FFFFFF 1px solid;	BORDER-RIGHT: #999999 1px solid;	BORDER-BOTTOM: #999999 1px solid; 
+			}
+
+.quicklinkbg {	BACKGROUND-IMAGE: url(../images/profile03/quicklinkbg.gif); 	background-repeat: repeat;}
+
+/*-----------------------------------------Main Navigation----------------------------------------*/
+
+.main_nav_devider { background-repeat: no-repeat;	height: 35px;	width: 4px; border: 0px;	
+					padding: 0px 0px 0px 0px;	background-image: url(../images/profile03/mainnav_separator.gif); 
+				}
+.mainnav_slop { background-repeat: no-repeat;	height: 35px;	width: 71px;	
+					background-image: url(../images/profile03/mainnav_slop.gif); 
+				}
+.mainnav_bgsml { background-repeat: repeat-x;	height: 35px;	background-image: url(../images/profile03/mainnav_bgsml.gif); }
+
+.main_navigation { background-image: url(../images/profile03/mainnav_buttonbg.gif);	background-repeat: repeat-x;
+					TEXT-DECORATION: none; font-weight: bold;
+				}
+.main_navigation A:link{	COLOR: Black; padding: 10px 0px 0px 0px;	TEXT-DECORATION: none; 	}
+.main_navigation A:visited{	COLOR: #000000; padding: 10px 0px 0px 0px;	TEXT-DECORATION: none; 	}
+.main_navigation A:hover{	COLOR: Red; background-image: url(../images/profile03/mainnav_buttonbg_over.gif);	
+				background-repeat: repeat-x;  height: 35px;  padding: 11px 0px 0px 0px;	TEXT-DECORATION: none;	
+				}
+.main_nav_selected { background-image: url(../images/profile03/mainnav_buttonbg_over.gif);	background-repeat: repeat-x;
+				TEXT-DECORATION: none; font-weight: bold;
+				}
+.main_nav_selected A:link{	COLOR: Black; TEXT-DECORATION: none; 	}
+.main_nav_selected A:visited{	COLOR: #000000; TEXT-DECORATION: none; 	}
+.main_nav_selected A:hover{	COLOR: Red; TEXT-DECORATION: none;	}
+				
+/*------------------------------------------Sub Navigation-----------------------------------------*/
+
+.sub_nav_devider { background-repeat: no-repeat;	height: 27px;	width: 4px; border: 0px;	
+					padding: 0px 0px 0px 0px;	background-image: url(../images/profile03/subnav_separator.gif);	
+				}
+.subnav_slop { 	background-repeat: no-repeat;	height: 27px; 	width: 71px;	
+				background-image: url(../images/profile03/subnav_slop.gif); 
+				}
+.subnav_bgsml { background-repeat: repeat-x;	height: 27px;	background-image: url(../images/profile03/subnav_bgsml.gif); 	}
+
+.sub_navigation {background-image: url(../images/profile03/subnav_buttonbg.gif);	background-repeat: repeat-x; 
+				TEXT-DECORATION: none; font-weight: bold;	
+				}
+.sub_navigation A:link{ 	COLOR: Black;  padding: 7px 0px 0px 0px;	TEXT-DECORATION: none;	}
+.sub_navigation A:visited{	COLOR: #000000; padding: 7px 0px 0px 0px;	TEXT-DECORATION: none;	}
+.sub_navigation A:hover{	COLOR: Red; background-image: url(../images/profile03/subnav_buttonbg_over.gif);	
+							background-repeat: repeat-x; height: 27px; 	padding: 7px 0px 0px 0px;	TEXT-DECORATION: none;	
+				}
+.sub_nav_selected { background-image: url(../images/profile03/subnav_buttonbg_over.gif);	background-repeat: repeat-x;
+						TEXT-DECORATION: none; font-weight: bold;	
+				}
+.sub_nav_selected A:link{	COLOR: Black; TEXT-DECORATION: none; 	}
+.sub_nav_selected A:visited{	COLOR: #000000; TEXT-DECORATION: none; 	}
+.sub_nav_selected A:hover{	COLOR: Red; TEXT-DECORATION: none;	}
+
+/*---------------------------------------Table formating--------------------------------------------*/
+
+.table_bg {		COLOR: Black;  BACKGROUND-IMAGE: url(../images/profile03/table_bg.gif); 	background-repeat: repeat;	}
+.table_bg A:link{		COLOR: Black; TEXT-DECORATION: underline; 	}
+.table_bg A:visited{	COLOR: #000000; TEXT-DECORATION: underline; 	}
+.table_bg A:hover{		COLOR: Red; TEXT-DECORATION: underline;	}
+
+.table_edit {		COLOR: Black;  border: 1px;		border-style: solid; 			border-color: #fce5ce;	}
+.table_edit td {	background-color:#ffffff;		padding: 2px 2px 2px 2px;		border: 0px;	}
+
+.table_edit A:link{		COLOR: Black; TEXT-DECORATION: underline; 	}
+.table_edit A:visited{	COLOR: #000000; TEXT-DECORATION: underline; 	}
+.table_edit A:hover{	COLOR: Red; TEXT-DECORATION: underline;	}
+
+.table_list {		COLOR: Black;  border: 1px;		border-style: solid; 			border-color: #ececec;	}
+.table_list td {	padding: 0px 2px 0px 2px;		border: 1px;
+					border-color: #ececec;			border-style: solid;			border-left-style: solid;
+					border-bottom-style: solid;		border-left-color: #ffffff;		border-bottom-color: #ffffff;
+					}
+					
+.table_list A:link{		COLOR: Black; TEXT-DECORATION: underline; }
+.table_list A:visited{	COLOR: #000000; TEXT-DECORATION: underline; }
+.table_list A:hover{		COLOR: Red; TEXT-DECORATION: none; }
+
+th {	BACKGROUND-IMAGE: url(../images/profile03/table_bg_column.gif); 		padding: 0px 2px 2px 2px;
+		border: 1px;				border-color: #ffffff;			border-style: solid;		border-right-style: solid;
+		background-repeat: repeat; 	border-right-color: #ffffff;	border-left-style: solid;	border-left-color: #ffffff; 
+		}
+
+/* EMR Navigation */
+.emr_navigation { background-image: url(../images/profile03/table_bg_column.gif);	background-repeat: repeat;
+					TEXT-DECORATION: none; height: 19px; 
+				}
+.emr_navigation A:link{		COLOR: Black; padding: 3px 8px 2px 8px;	TEXT-DECORATION: none; 	width:100%;	}
+.emr_navigation A:visited{	COLOR: #000000; padding: 3px 8px 2px 8px;	TEXT-DECORATION: none; 	width:100%;	}
+.emr_navigation A:hover{	COLOR: Red;  background-image: url(../images/profile03/table_bg.gif); background-repeat: repeat;  
+							width:100%;	height: 18px;  padding: 3px 8px 2px 8px;	TEXT-DECORATION: none;	
+				}
+.emr_nav_selected {	background-image: url(../images/profile03/table_bg.gif);	font-weight: bold;
+				background-repeat: repeat;  height: 19px;  padding: 3px 8px 2px 8px;	TEXT-DECORATION: none;
+				}
+.emr_nav_selected A:link{		COLOR: Black; TEXT-DECORATION: none; 	}
+.emr_nav_selected A:visited{	COLOR: #000000; TEXT-DECORATION: none; 	}
+.emr_nav_selected A:hover{		COLOR: Red; TEXT-DECORATION: none;	}
+
+.button_prev {	cursor: pointer;  	background-image: url(../images/profile03/previous.gif) ; background-position:center;
+			 background-repeat: no-repeat;		line-height: 16px; width:20px;	BORDER: #FFFFFF 0px; 
+			}
+.button_next {	cursor: pointer;  	background-image: url(../images/profile03/next.gif) ; background-position:center;
+			 background-repeat: no-repeat;		line-height: 16px; width:20px;	BORDER: #FFFFFF 0px; 
+			}
+.button_prev_disb {	cursor: pointer;  	background-image: url(../images/profile03/previous_disb.gif) ; background-position:center;
+			 background-repeat: no-repeat;		line-height: 16px; width:20px;	BORDER: #FFFFFF 0px;  
+			}
+.button_next_disb {	cursor: pointer;  	background-image: url(../images/profile03/next_disb.gif) ; background-position:center;
+			 background-repeat: no-repeat;		line-height: 16px; width:20px;	BORDER: #FFFFFF 0px; 
+			}
+.notedefault {
+	 position: absolute;	 visibility: hidden;
+	 padding: 3px;	 		border: 1px solid #369;	 background-color: white;
+}
+.snp-triggeroffset, .snp-mousetrack { margin-left: 0px;	 margin-top: 0px;}
+.snb-pinned {	visibility: inherit;}	
+.greenbg {background-color:#00FF00;}			
+.editicon { cursor: hand; background-image: url(../images/edit_icon.gif); background-repeat: no-repeat; background-position:  left center; width:15px; hight:15px;}
+/*------tooltip class ------*/
+.notedefault, .notenested { position: absolute; visibility: hidden;}
+.notedefault { padding: 3px; border: 1px solid #369; background-color: white;}
+.notenested {  width: 8em; padding: 3px; border: 1px solid #963; background-color: white; }
+.snp-mouseoffset, .snp-triggeroffset, .snp-mousetrack {  margin-left: 5px; margin-top: 15px; }
+/*-----------------------------------------End CSS--------------------------------------------*/
+
+

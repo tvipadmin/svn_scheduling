@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+ <beans> 
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+				<value>network</value>
+	   	    </list>
+		</property>	
+	</bean>
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+		<property name="basename" value="views"></property>
+	</bean>
+	
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="ScheduleLogin.htm">loginController</prop>
+				<prop key="Verification.htm">VerificationController</prop>				
+				<prop key="Logout.htm">logoutController</prop>
+		    </props>
+		</property>
+	</bean>
+	
+	<bean id="viewsController" class="com.televital.scheduling.web.ViewsController">
+		<property name="methodNameResolver" ref="viewsControllerResolver"></property>
+	</bean>
+	
+	<bean id="viewsControllerResolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+			<!-- 	<prop key="/Welcome.htm">welcomeHandler</prop>
+				<prop key="/NotAuthorized.htm">unauthorizedAccessHandler</prop> -->
+				<prop key="/GeneralError.htm">GeneralErrorHandler</prop> 
+				<prop key="/TCILFrame.htm">TCILFrameHandler</prop>
+				<prop key="/SSHFrame.htm">SSHFrameHandler</prop>
+				<prop key="/PEFrame.htm">PEFrameHandler</prop>				
+				<prop key="/AvailabilityRequests.htm">AvailabilityRequestsHandler</prop>
+				<prop key="/Availability.htm">AvailabilityHandler</prop>
+		    </props>		
+	   </property>	
+    </bean>
+		
+	<bean id="SecureUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	    <property name="interceptors">
+			<list>
+				<ref bean="permissionInterceptor"/>
+			</list>
+	    </property>
+		<property name="mappings">
+		  <props>	
+		  		<prop key="TCILFrame.htm">viewsController</prop>			
+				<prop key="SSHFrame.htm">viewsController</prop>
+				<prop key="PEFrame.htm">viewsController</prop>
+				<prop key="AvailabilityRequests.htm">viewsController</prop>
+				<prop key="Availability.htm">viewsController</prop>
+				<prop key="Tcil.htm">ScheduleController</prop>
+				<prop key="AddSchedule.htm">addScheduleController</prop>
+				<prop key="Specialist.htm">SpecialistController</prop>
+				<prop key="EditSchedule.htm">editScheduleController</prop>
+				<prop key="SSHAddSchedule.htm">sshAddScheduleController</prop>
+                <prop key="SSHEditSchedule.htm">sshEditScheduleController</prop>
+                <prop key="ViewPEFinalSchedule.htm">viewPEFinalScheduleController</prop>
+                <prop key="PEAddSchedule.htm">peAddScheduleController</prop>
+                <prop key="PEEditSchedule.htm">peEditScheduleController</prop> 
+                <prop key="Patient.htm">RemoteController</prop>
+                <prop key="ScheduleAvailability.htm">scheduleAvailabilityController</prop>
+                <prop key="ScheduleRequests.htm">scheduleRequestsController</prop>
+                <prop key="SpecialistFinalSchedule.htm">specialistFinalScheduleController</prop>
+                <prop key="ListHospital.htm">listHospitalController</prop>
+                <prop key="ImportHospital.htm">importHospitalController</prop>
+                <prop key="EditHospital.htm">editController</prop>
+               
+         </props>	   
+	   </property>	
+    </bean>
+		
+	<bean id="permissionInterceptor" class="com.televital.scheduling.web.PermissionInterceptor"/>
+		
+	<bean id="logoutController" class="com.televital.scheduling.web.LogoutController">
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+	</bean>
+	
+	<bean id="loginController" class="com.televital.scheduling.web.LoginController">
+		<property name="formView" value="LoginForm"></property>
+		<property name="scheduleFacade" ref="scheduleFacade"> </property>
+		<property name="successView" value="loginSuccess"></property>
+		<property name="validator" ref="loginValidator"> </property>
+		<property name="passwordCodec"  ref="passwordCodecImpl"></property>
+    </bean>
+	
+	<bean id="viewPEFinalScheduleController" class="com.televital.scheduling.web.ViewPEFinalScheduleController">
+		<property name="formView" value="PEFinalScheduleView"></property>
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+		<property name="dispalyPageSize" value="${dispalyPageSize}"/>
+	</bean>
+		
+	<bean id="passwordCodecImpl" class="com.televital.scheduling.passwordencrypt.IPasswordCodecImpl"></bean>
+	
+	<bean id="loginValidator" class="com.televital.scheduling.validation.LoginFormValidator"></bean>
+		
+	<bean id="VerificationController" class="com.televital.scheduling.web.VerificationController">
+		 <property name="scheduleFacade" ref="scheduleFacade"></property>
+	</bean>
+		
+	<bean id="verificationValidator" class="com.televital.scheduling.validation.VerificationValidator"></bean>
+	
+	<bean id="ScheduleController" class="com.televital.scheduling.web.ScheduleController">
+		<property name="formView" value="ScheduleView"></property>
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+		<property name="dispalyPageSize" value="${dispalyPageSize}"/>
+	</bean>
+		
+	<bean id="SpecialistController" class="com.televital.scheduling.web.SpecialistController">
+		<property name="formView" value="SpecialistView"></property>
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+		<property name="dispalyPageSize" value="${dispalyPageSize}"/>
+	</bean>
+	
+	<bean id="RemoteController" class="com.televital.scheduling.web.RemoteController">
+		<property name="formView" value="PatientView"></property>
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+		<property name="dispalyPageSize" value="${dispalyPageSize}"/>
+	</bean>
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/classes/scheduling.properties</value>
+			</list>
+		</property>	
+	</bean>
+	
+	<bean id="addScheduleController" class="com.televital.scheduling.web.AddScheduleController">
+		<property name="formView" value="AddScheduleView"></property>			
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+		<property name="successView" value="AddScheduleSuccessView"></property>
+		<property name="addSchedulesSize" value="${addSchedulesSize}"/>
+	 	<property name="validator" ref="addScheduleValidator"></property>  
+	</bean>
+	
+ 	<bean id="addScheduleValidator" class="com.televital.scheduling.validation.AddScheduleValidator"></bean> 
+
+    <bean id="editScheduleController" class="com.televital.scheduling.web.EditScheduleController">
+		<property name="formView" value="EditScheduleView"></property>			
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+		<property name="successView" value="EditScheduleSuccessView"></property>
+	  	<property name="validator" ref="editScheduleValidator"></property>  
+	</bean>
+	
+	<bean id="editScheduleValidator" class="com.televital.scheduling.validation.EditScheduleValidator"></bean> 
+	
+	<bean id="sshAddScheduleController" class="com.televital.scheduling.web.SSHAddScheduleController">
+		<property name="formView" value="SSHAddScheduleView"></property>			
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+		<property name="successView" value="SSHAddScheduleSuccessView"></property>
+		<property name="addSchedulesSize" value="${addSchedulesSize}"/>
+	  	<property name="validator" ref="sshAddScheduleValidator"></property>  
+	</bean>
+	
+  	<bean id="sshAddScheduleValidator" class="com.televital.scheduling.validation.SSHAddScheduleValidator"></bean>  
+ 
+	<bean id="sshEditScheduleController" class="com.televital.scheduling.web.SSHEditScheduleController">
+		<property name="formView" value="SSHEditScheduleView"></property>			
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+		<property name="successView" value="SSHEditScheduleSuccessView"></property>
+	  	<property name="validator" ref="sshEditScheduleValidator"></property>  
+	</bean>
+	 
+	<bean id="sshEditScheduleValidator" class="com.televital.scheduling.validation.SSHEditScheduleValidator"></bean> 
+	
+	<bean id="peAddScheduleController" class="com.televital.scheduling.web.PEAddScheduleController">
+		<property name="formView" value="PEAddScheduleView"></property>			
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+		<property name="successView" value="PEAddScheduleSuccessView"></property>
+		<property name="addSchedulesSize" value="${addSchedulesSize}"/>
+	  	<property name="validator" ref="peAddScheduleValidator"></property>  
+	</bean>
+	
+  	<bean id="peAddScheduleValidator" class="com.televital.scheduling.validation.PEAddScheduleValidator"></bean> 
+	
+	<bean id="peEditScheduleController" class="com.televital.scheduling.web.PEEditScheduleController">
+		<property name="formView" value="PEEditScheduleView"></property>			
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+		<property name="successView" value="PEEditScheduleSuccessView"></property>
+	  	<property name="validator" ref="peEditScheduleValidator"></property>  
+	</bean>
+	 
+	<bean id="peEditScheduleValidator" class="com.televital.scheduling.validation.PEEditScheduleValidator"></bean> 
+	
+	<bean id="scheduleAvailabilityController" class="com.televital.scheduling.web.ScheduleAvailabilityController">
+	   <property name="formView" value="ScheduleAvailabilityView"></property>
+	   <property name="scheduleFacade" ref="scheduleFacade"></property>
+	</bean>
+	
+	<bean id="scheduleRequestsController" class="com.televital.scheduling.web.ScheduleRequestsController">
+	    <property name="formView" value="ScheduleRequestsView"></property>
+	    <property name="scheduleFacade" ref="scheduleFacade"></property>
+	</bean>
+	
+	<bean id="specialistFinalScheduleController" class="com.televital.scheduling.web.SpecialistFinalScheduleController">
+	    <property name="formView" value="SpecialistFinalScheduleView"></property>
+	    <property name="scheduleFacade" ref="scheduleFacade"></property>
+	</bean>
+	
+	<bean id="listHospitalController" class="com.televital.scheduling.web.ListHospitalController">
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+		<property name="recordsPerPage" value="${NumberOfRecordsPerPage}"></property>
+	</bean>
+	
+	<bean id="importHospitalController" class="com.televital.scheduling.web.ImportHospitalController">
+		<property name="formView" value="ImportHospitalForm"></property>
+		<property name="successView" value="ListHospital"></property>
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+	 	<property name="validator" ref="ImportHospitalValidator"></property>
+	</bean>
+	<bean id="ImportHospitalValidator" class="com.televital.scheduling.validation.ImportHospitalValidator"></bean> 
+	
+	<bean id="editController" class="com.televital.scheduling.web.EditHospitalController">
+		<property name="formView" value="EditHospitalForm"></property>
+		<property name="successView" value="ListHospital"></property>
+		<property name="scheduleFacade" ref="scheduleFacade"></property>
+	  	<property name="validator" ref="editImportHospitalValidator"></property>  
+	</bean>
+	
+	<bean id="editImportHospitalValidator" class="com.televital.scheduling.validation.EditImportHospitalValidator"></bean>
+	
+	</beans>
+	
+	
+	
